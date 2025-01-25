@@ -1,0 +1,21 @@
+module ALU (a,b,sel,out);
+  input a,b;
+  input [0:2]sel;
+  output reg out;
+  
+  parameter Addition = 10'd0,
+            Subtraction = 10'd1,
+            AND = 10'd2,
+            OR = 10'd3,
+            NOT = 10'd4;
+  always @(a,b,sel)
+    begin
+      case (sel)
+        Addition : out=a+b;
+        Subtraction : out= a-b;
+        AND : out=a&b;
+        OR : out= a|b;
+        NOT : out = ~a;
+      endcase
+    end
+endmodule
